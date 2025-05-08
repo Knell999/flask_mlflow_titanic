@@ -76,9 +76,6 @@ def preprocess_data(passenger_data):
         if not preprocessed_data.empty:
             return preprocessed_data
     
-    # 원본 데이터를 전처리해야 하는 경우
-    # 이 부분은 필요하다면 train_mlflow.py의 전처리 로직을 구현
-    
     return passenger_data
 
 # 모델 로드
