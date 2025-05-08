@@ -19,6 +19,15 @@ features = pd.read_csv(os.path.join(data_dir, 'preprocessed_features.csv'))
 target = pd.read_csv(os.path.join(data_dir, 'preprocessed_target.csv'))
 train_data = pd.concat([features, target], axis=1)
 
+# 학습에 사용된 모든 Deck 카테고리를 파악하기 위한 원-핫 인코딩 생성
+features_with_encoded_deck = features.copy()
+features_with_encoded_deck['Deck'] = features_with_encoded_deck['Deck'].fillna('')
+all_deck_dummies = pd.get_dummies(features_with_encoded_deck['Deck'], prefix='Deck')
+features_with_encoded_deck = pd.concat([features_with_encoded_deck.drop('Deck', axis=1), all_deck_dummies], axis=1)
+
+# 학습에 사용된 모든 특성(features) 목록을 저장
+MODEL_FEATURES = features_with_encoded_deck.columns.tolist()
+
 # MLflow에서 최고 성능의 모델 가져오기
 def get_best_model():
     # 직접 학습된 모델 파일 경로
@@ -89,13 +98,32 @@ def predict():
             return jsonify({"error": f"Passenger with ID {passenger_id} not found"}), 404
         
         # 예측에 사용할 특성 데이터
-        X = features.iloc[passenger_idx:passenger_idx+1]
+        X = features.iloc[passenger_idx:passenger_idx+1].copy()
         
-        # Deck 열이 있고 문자열 값이면 원-핫 인코딩 적용
-        if 'Deck' in X.columns and X['Deck'].dtype == object:
+        # Deck 열을 원-핫 인코딩으로 변환 (학습 시와 동일한 열 구조를 만듦)
+        if 'Deck' in X.columns:
             X['Deck'] = X['Deck'].fillna('')
+            # 새로운 데이터에 대한 원-핫 인코딩 열 생성
             deck_dummies = pd.get_dummies(X['Deck'], prefix='Deck')
-            X = pd.concat([X.drop('Deck', axis=1), deck_dummies], axis=1)
+            
+            # 원래 X에서 Deck 열 제거
+            X = X.drop('Deck', axis=1)
+            
+            # 학습 시 사용된 모든 Deck 더미 열 확보
+            for col in MODEL_FEATURES:
+                if col.startswith('Deck_') and col not in deck_dummies.columns:
+                    deck_dummies[col] = 0
+            
+            # 불필요한 열 제거 (학습 데이터에 없는 열)
+            extra_cols = [col for col in deck_dummies.columns if col not in MODEL_FEATURES]
+            for col in extra_cols:
+                deck_dummies = deck_dummies.drop(col, axis=1)
+            
+            # 원-핫 인코딩된 열을 특성에 추가
+            X = pd.concat([X, deck_dummies], axis=1)
+        
+        # 모델이 학습된 열 순서와 동일하게 맞춤
+        X = X.reindex(columns=MODEL_FEATURES, fill_value=0)
         
         # 예측 수행
         prediction = model.predict(X)[0]
