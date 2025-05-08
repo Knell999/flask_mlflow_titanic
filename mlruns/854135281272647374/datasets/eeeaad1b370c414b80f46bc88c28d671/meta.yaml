@@ -1,0 +1,24 @@
+digest: c00507e8
+name: dataset
+profile: '{"num_rows": 268, "num_elements": 6700}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "Sex", "required": true}, {"type":
+  "double", "name": "Age", "required": true}, {"type": "double", "name": "Fare", "required":
+  true}, {"type": "double", "name": "FamilySize", "required": true}, {"type": "long",
+  "name": "IsAlone", "required": true}, {"type": "boolean", "name": "Embarked_C",
+  "required": true}, {"type": "boolean", "name": "Embarked_Q", "required": true},
+  {"type": "boolean", "name": "Embarked_S", "required": true}, {"type": "boolean",
+  "name": "Title_Master", "required": true}, {"type": "boolean", "name": "Title_Miss",
+  "required": true}, {"type": "boolean", "name": "Title_Mr", "required": true}, {"type":
+  "boolean", "name": "Title_Mrs", "required": true}, {"type": "boolean", "name": "Title_Rare",
+  "required": true}, {"type": "boolean", "name": "Pclass_1", "required": true}, {"type":
+  "boolean", "name": "Pclass_2", "required": true}, {"type": "boolean", "name": "Pclass_3",
+  "required": true}, {"type": "boolean", "name": "Deck_", "required": true}, {"type":
+  "boolean", "name": "Deck_A", "required": true}, {"type": "boolean", "name": "Deck_B",
+  "required": true}, {"type": "boolean", "name": "Deck_C", "required": true}, {"type":
+  "boolean", "name": "Deck_D", "required": true}, {"type": "boolean", "name": "Deck_E",
+  "required": true}, {"type": "boolean", "name": "Deck_F", "required": true}, {"type":
+  "boolean", "name": "Deck_G", "required": true}, {"type": "boolean", "name": "Deck_T",
+  "required": true}]}'
+source: '{"tags": {"mlflow.user": "ubuntu", "mlflow.source.name": "./src/train_mlflow.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "2059238b179a7c3c6f9e89c7baed7451a34cfea1"}}'
+source_type: code

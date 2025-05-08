@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/854135281272647374/0ce608b9d8b045219e8aba96f8d0ba59/artifacts
+end_time: 1746687374397
+entry_point_name: ''
+experiment_id: '854135281272647374'
+lifecycle_stage: active
+run_id: 0ce608b9d8b045219e8aba96f8d0ba59
+run_name: KNN
+run_uuid: 0ce608b9d8b045219e8aba96f8d0ba59
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746687365567
+status: 3
+tags: []
+user_id: ubuntu

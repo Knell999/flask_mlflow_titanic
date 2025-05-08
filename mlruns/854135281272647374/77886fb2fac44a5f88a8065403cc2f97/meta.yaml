@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/854135281272647374/77886fb2fac44a5f88a8065403cc2f97/artifacts
+end_time: 1746687382225
+entry_point_name: ''
+experiment_id: '854135281272647374'
+lifecycle_stage: active
+run_id: 77886fb2fac44a5f88a8065403cc2f97
+run_name: Decision Tree
+run_uuid: 77886fb2fac44a5f88a8065403cc2f97
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746687374415
+status: 3
+tags: []
+user_id: ubuntu

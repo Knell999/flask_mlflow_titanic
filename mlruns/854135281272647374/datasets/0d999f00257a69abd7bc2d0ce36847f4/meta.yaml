@@ -1,0 +1,19 @@
+digest: 626a41a3
+name: dataset
+profile: '{"num_rows": 623, "num_elements": 10591}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "Sex", "required": true}, {"type":
+  "double", "name": "Age", "required": true}, {"type": "double", "name": "Fare", "required":
+  true}, {"type": "double", "name": "FamilySize", "required": true}, {"type": "long",
+  "name": "IsAlone", "required": true}, {"type": "string", "name": "Deck", "required":
+  false}, {"type": "boolean", "name": "Embarked_C", "required": true}, {"type": "boolean",
+  "name": "Embarked_Q", "required": true}, {"type": "boolean", "name": "Embarked_S",
+  "required": true}, {"type": "boolean", "name": "Title_Master", "required": true},
+  {"type": "boolean", "name": "Title_Miss", "required": true}, {"type": "boolean",
+  "name": "Title_Mr", "required": true}, {"type": "boolean", "name": "Title_Mrs",
+  "required": true}, {"type": "boolean", "name": "Title_Rare", "required": true},
+  {"type": "boolean", "name": "Pclass_1", "required": true}, {"type": "boolean", "name":
+  "Pclass_2", "required": true}, {"type": "boolean", "name": "Pclass_3", "required":
+  true}]}'
+source: '{"tags": {"mlflow.user": "ubuntu", "mlflow.source.name": "./src/train_mlflow.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "2059238b179a7c3c6f9e89c7baed7451a34cfea1"}}'
+source_type: code
