@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/854135281272647374/62bc1d6c53f841378450c52804448855/artifacts
+end_time: 1746691742041
+entry_point_name: ''
+experiment_id: '854135281272647374'
+lifecycle_stage: active
+run_id: 62bc1d6c53f841378450c52804448855
+run_name: SVM
+run_uuid: 62bc1d6c53f841378450c52804448855
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746691737585
+status: 3
+tags: []
+user_id: ubuntu

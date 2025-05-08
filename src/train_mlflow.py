@@ -44,6 +44,11 @@ mlflow.set_experiment("Titanic_Survival_Prediction")
 # 자동 로깅 설정
 mlflow.sklearn.autolog()
 
+# 모델 성능 추적을 위한 변수
+best_accuracy = 0
+best_model = None
+best_model_name = None
+
 # 각 모델 학습 및 평가
 for name, model in models.items():
     with mlflow.start_run(run_name=name):
@@ -85,8 +90,18 @@ for name, model in models.items():
         # 모델 저장
         mlflow.sklearn.log_model(model, "model")
         
-        # 최적 모델 저장 (Random Forest가 가장 좋은 성능을 보인다고 가정)
-        if name == "Random Forest":
-            model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "random_forest_model")
-            os.makedirs(os.path.dirname(model_path), exist_ok=True)
-            mlflow.sklearn.save_model(model, model_path)
+        # 최고 성능 모델 추적
+        if accuracy > best_accuracy:
+            best_accuracy = accuracy
+            best_model = model
+            best_model_name = name
+
+# 최고 성능 모델 저장
+if best_model is not None:
+    print(f"\nBest model: {best_model_name} with accuracy: {best_accuracy:.4f}")
+    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "best_model")
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
+    mlflow.sklearn.save_model(best_model, model_path)
+    print(f"Best model saved to {model_path}")
+else:
+    print("No model was trained successfully.")

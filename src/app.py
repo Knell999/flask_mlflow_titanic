@@ -31,7 +31,7 @@ MODEL_FEATURES = features_with_encoded_deck.columns.tolist()
 # MLflow에서 최고 성능의 모델 가져오기
 def get_best_model():
     # 직접 학습된 모델 파일 경로
-    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "random_forest_model")
+    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "best_model")
     
     # 학습된 모델이 있으면 해당 모델 사용
     if os.path.exists(model_path):
